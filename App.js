@@ -8,10 +8,19 @@ import {
   Alert,
   Button,
   StyleSheet,
-
+  Platform,
 } from "react-native";
 
-
+if (Platform.OS === "web") {
+  Alert.alert = (titular, mensaje, boton) => {
+    const list = Array.isArray(mensaje) ? mensaje : boton;
+    if (list) {
+      if (window.confirm(titular)) list.find((b) => b.onPress)?.onPress();
+    } else {
+      window.alert(titular + (mensaje ? "\n" + mensaje : ""));
+    }
+  };
+}
 
 export default function App() {
   // regitro rapido de usuario
