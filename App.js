@@ -36,6 +36,12 @@ export default function App() {
       Alert.alert("Faltan datos", "Completa tos slos campos");
       return;
     }
+
+    if (!correo.toLowerCase().endsWith("@gmail.com")) {
+      Alert.alert("Correo inválido", "El correo debe terminar en @gmail.com");
+      return;
+    }
+
     // validacion de contraseña
     if (contraseña.length < 6) {
       Alert.alert("Contraseña invalida", "Minimo 6 caracteres");
@@ -116,12 +122,5 @@ const styles = StyleSheet.create({
     padding: 3,
     fontSize: 15,
     backgroundColor: "#ffffff",
-  },
-  resultado: {
-    fontSize: 24,
-    fontWeight: "bold",
-    textAlign: "center",
-    marginVertical: 6,
-    color: "#999",
   },
 });
